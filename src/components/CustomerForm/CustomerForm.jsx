@@ -22,9 +22,24 @@ function CustomerForm ({refreshCustomer}) {
         });
     }
 
-    return(
-
-    )
+    return (
+        <form className="addCustomer" onSubmit={handleSubmit}>
+            <input value={customerName} placeholder="Name" 
+                onChange={(event) => 
+                setCustomerName(event.target.value)}/>
+            <input value={customerName} placeholder="Street Address" 
+                onChange={(event) => 
+                setCustomerName(event.target.value)}/>
+            <input value={customerName} placeholder="City" 
+                onChange={(event) => 
+                setCustomerName(event.target.value)}/>
+            <input value={customerName} placeholder="Zip Code" 
+                onChange={(event) => 
+                setCustomerName(event.target.value)}/>
+            <button type="submit">Next</button>
+        </form>
+        )
 }
 
-export default CustomerForm.jsx
+export default CustomerForm;
+
