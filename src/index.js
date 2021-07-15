@@ -7,8 +7,17 @@ import logger from "redux-logger";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 
+//Reducers
 const pizzaReducer = (state = [], action) => {
     return state;
+};
+
+const customerReducer = (state = [], action) => {
+  return state;
+};
+
+const checkOutReducer = (state = [], action) => {
+  return state;
 };
 
 // The store is the big JavaScript Object that holds all of the information for our application
