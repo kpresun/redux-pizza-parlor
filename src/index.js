@@ -5,6 +5,7 @@ import App from './components/App/App';
 
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
+import { logger } from "redux-logger";
 
 const pizzaReducer = (state = [], action) => {
     return state;
