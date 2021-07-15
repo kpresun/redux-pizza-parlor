@@ -9,6 +9,9 @@ import { Provider } from "react-redux";
 
 //Reducers
 const pizzaReducer = (state = [], action) => {
+    if (action.type === 'GET_PIZZAS') {
+        return action.payload
+    }
     return state;
 };
 
