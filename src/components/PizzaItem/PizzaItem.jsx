@@ -34,14 +34,6 @@ function PizzaItem({ pizza }) {
       });
     });
   };
-  const gridStyles = makeStyles({
-      root: {
-          flexGrow: 1
-      },
-      paper: {
-          padding: theme.spacing(1)
-      }
-  });
   const useStyles = makeStyles({
     root: {
       maxWidth: 345,
