@@ -1,47 +1,50 @@
 import axios from 'axios';
 import {useState, useEffect} from 'react';
+import { useDispatch } from 'react-redux';
 
-function CustomerForm ({refreshCustomer}) {
+function CustomerForm () {
+    
+    const dispatch = useDispatch();
+    const [customerName, setCustomerName] = useState('');
+    const [streetAddress, setStreetAddress] = useState('');
+    const [cityName, setCityName] = useState('');
+    const [customerZip, setCustomerZip] = useState('');
+    const [deliveryOption, setDeliveryOption] = useState('');
 
-    const [customerName, setCustomerName] = useState();
 
     useEffect(() => {
     console.log(customerName);
     }, []);
 
     const handleSubmit = event => {
+        event.preventDefault();
+        //need to pass this to Customer Reducer.
 
-        axios.post('/api/order',{customerName})
-        .then(response =>{
-        console.log(`What is the POST response`,response.data);
-        refreshCustomer();
-        setCustomerName('');
+        dispatch({
+            type: 'ADD_NEW_CUSTOMER',
+            payload: {customerName, streetAddress, cityName, customerZip, deliveryOption}
         })
-        .catch(error => {
-            console.log('Error in POST. Please try again.', error);
-        });
     }
 
     return (
         <form className="addCustomer" onSubmit={handleSubmit}>
             <input value={customerName} placeholder="Name" 
                 onChange={(event) => 
-                setCustomerName(event.target.customer_name)}/>
-            <input value={customerName} placeholder="Street Address" 
+                setCustomerName(event.target.value)}/>
+            <input value={streetAddress} placeholder="Street Address" 
                 onChange={(event) => 
-                setCustomerName(event.target.street_address)}/>
-            <input value={customerName} placeholder="City" 
+                setStreetAddress(event.target.value)}/>
+            <input value={cityName} placeholder="City" 
                 onChange={(event) => 
-                setCustomerName(event.target.city)}/>
-            <input value={customerName} placeholder="Zip Code" 
+                setCityName(event.target.value)}/>
+            <input value={customerZip} placeholder="Zip Code" 
                 onChange={(event) => 
-                setCustomerName(event.target.zip)}/>
-            <button type="radio">Pickup</button>
-            <button>Delivery</button>
+                setCustomerZip(event.target.value)}/>
+            <input type="radio" name="deliveryOption" value="Pickup" onChange={(event) => setDeliveryOption(event.target.value)}/>Pickup
+            <input type="radio" name="deliveryOption" value="Delivery" onChange={(event) => setDeliveryOption(event.target.value)}/>Delivery
             <button type="submit">Next</button>
         </form>
-    )
+        )
 }
 
 export default CustomerForm;
-
