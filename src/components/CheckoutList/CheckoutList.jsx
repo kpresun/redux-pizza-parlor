@@ -1,4 +1,6 @@
-function CheckoutList() {
+
+
+function CheckoutList({cartReducer}) {
     return(
         <tr>
             
