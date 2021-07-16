@@ -22,16 +22,16 @@ const customerReducer = (state = [], action) => {
     return action.payload;
     }
     return state;
+  };
   
 const cartReducer = (state = [], action) => {
   if (action.type === "ADD_TO_CART") {
       return action.payload
   }
   if (action.type === "REMOVE_FROM_CART") {
-    return //something;
+    return state;
   }
   return state;
-
 };
 
 // The store is the big JavaScript Object that holds all of the information for our application
