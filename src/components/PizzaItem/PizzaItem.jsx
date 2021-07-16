@@ -27,7 +27,8 @@ function PizzaItem({ pizza }) {
         type: "REMOVE_FROM_CART",
         payload: { pizza, orderID },
       });
-    };
+    });
+  };
 
 
   const useStyles = makeStyles({
