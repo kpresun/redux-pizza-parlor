@@ -30,7 +30,6 @@ function PizzaItem({ pizza }) {
     });
   };
 
-
   const useStyles = makeStyles({
     root: {
       maxWidth: 345,

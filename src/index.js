@@ -26,6 +26,7 @@ const customerReducer = (state = [], action) => {
 };
 
 
+
 const cartReducer = (state = [], action) => {
   switch(action.type) {
     case "ADD_TO_CART":
@@ -34,6 +35,7 @@ const cartReducer = (state = [], action) => {
       return [...state.filter(pizza => (pizza.orderID !== (action.payload.orderID - 1)))]
     default:
       return state;
+
   }
 }
 //return [...state.filter(pizza => pizza.name != (action.payload.pizza.name)))]
