@@ -4,6 +4,7 @@ import './index.css';
 import App from './components/App/App';
 import {logger} from 'redux-logger';
 
+
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 
@@ -16,6 +17,12 @@ const pizzaReducer = (state = [], action) => {
     return state;
 };
 
+const customerReducer = (state = [], action) => {
+    if (action.type === "ADD_NEW_CUSTOMER") {
+    return action.payload;
+    }
+    return state;
+  
 const cartReducer = (state = [], action) => {
   if (action.type === "ADD_TO_CART") {
       return action.payload
@@ -24,11 +31,7 @@ const cartReducer = (state = [], action) => {
     return //something;
   }
   return state;
-};
 
-const customerReducer = (state = [], action) => {
-
-  return state;
 };
 
 // The store is the big JavaScript Object that holds all of the information for our application
@@ -36,6 +39,7 @@ const storeInstance = createStore(
   combineReducers({
     pizzaReducer,
     cartReducer,
+    customerReducer,
   }),
   applyMiddleware(logger)
 );
