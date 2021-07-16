@@ -11,29 +11,25 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 function PizzaItem({ pizza }) {
+  const dispatch = useDispatch();
+  let orderID = 1;
+
   const addPizzaToCart = () => {
-    axios({
-      method: "POST",
-      url: "/",
-    }).then((response) => {
       dispatch({
         type: "ADD_TO_CART",
-        payload: { pizza },
+        payload: { pizza, orderID },
+      });
+      orderID + 1;
+    };
+
+  const removePizzaFromCart = () => {
+      dispatch({
+        type: "REMOVE_FROM_CART",
+        payload: { pizza, orderID },
       });
     });
   };
 
-  const removePizzaFromCart = () => {
-    axios({
-      method: "DELETE",
-      url: "/",
-    }).then((response) => {
-      dispatch({
-        type: "REMOVE_FROM_CART",
-        payload: { pizza },
-      });
-    });
-  };
 
   const useStyles = makeStyles({
     root: {
@@ -45,6 +41,7 @@ function PizzaItem({ pizza }) {
       height: 140,
     }
   });
+
   const classes = useStyles();
   return (
     <Card className={classes.root} style={{display: "inline-block"}}>
@@ -54,9 +51,11 @@ function PizzaItem({ pizza }) {
         </CardMedia>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {pizza.name} {pizza.price}
+            {pizza.name} 
+            <br>
+            </br>${pizza.price}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p" style={{height: 125}}>
+          <Typography variant="body2" color="textSecondary" component="p" style={{height: 95}}>
             {pizza.description}
           </Typography>
         </CardContent>
@@ -74,5 +73,3 @@ function PizzaItem({ pizza }) {
 }
 
 export default PizzaItem;
-
-
