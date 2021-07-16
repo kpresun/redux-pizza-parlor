@@ -11,29 +11,25 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 function PizzaItem({ pizza }) {
+  const dispatch = useDispatch();
+  let orderID = 1;
+
   const addPizzaToCart = () => {
-    axios({
-      method: "POST",
-      url: "/",
-    }).then((response) => {
-      dispatchEvent({
+      dispatch({
         type: "ADD_TO_CART",
-        payload: { pizza },
+        payload: { pizza, orderID },
       });
-    });
-  };
+      orderID + 1;
+    };
 
   const removePizzaFromCart = () => {
-    axios({
-      method: "DELETE",
-      url: "/",
-    }).then((response) => {
-      dispatchEvent({
+      dispatch({
         type: "REMOVE_FROM_CART",
-        payload: { pizza },
+        payload: { pizza, orderID },
       });
-    });
-  };
+    };
+
+
   const useStyles = makeStyles({
     root: {
       maxWidth: 345,
@@ -44,6 +40,7 @@ function PizzaItem({ pizza }) {
       height: 140,
     }
   });
+
   const classes = useStyles();
   return (
     <Card className={classes.root} style={{display: "inline-block"}}>
