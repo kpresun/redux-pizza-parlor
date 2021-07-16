@@ -39,7 +39,7 @@ const refreshPizza = () => {
             <h1>Specialty Pizzas for you</h1>
             <ul>
                 {ourPizzas.map((pizza, index) => (
-                    <PizzaItem key={index} thePizza={pizza} />
+                    <PizzaItem key={index} pizza={pizza} />
                 ))}
             </ul>
         </div>

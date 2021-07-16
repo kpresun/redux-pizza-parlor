@@ -10,7 +10,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-function PizzaItem(thePizza) {
+function PizzaItem({pizza}) {
 
     const addPizzaToCart = () => {
         axios({
@@ -20,7 +20,7 @@ function PizzaItem(thePizza) {
         .then(response => {
             dispatchEvent({
                 type: 'ADD_TO_CART',
-                payload: {thePizza}
+                payload: {pizza}
              })
         })
     }
@@ -33,7 +33,7 @@ function PizzaItem(thePizza) {
         .then(response => {
             dispatchEvent({
                 type: 'REMOVE_FROM_CART',
-                payload: {thePizza}
+                payload: {pizza}
             })
         })
     }
@@ -47,17 +47,17 @@ function PizzaItem(thePizza) {
       });
     const classes = useStyles();
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} display="flex">
           <CardActionArea>
             <CardMedia>
-              <img src={thePizza.image_path} />
+              <img src={pizza.image_path} />
             </CardMedia>
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                {thePizza.Name} {thePizza.price}
+                {pizza.name} {pizza.price}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                {thePizza.description}
+                {pizza.description}
               </Typography>
             </CardContent>
           </CardActionArea>
