@@ -16,7 +16,7 @@ function PizzaItem({ pizza }) {
       method: "POST",
       url: "/",
     }).then((response) => {
-      dispatchEvent({
+      dispatch({
         type: "ADD_TO_CART",
         payload: { pizza },
       });
@@ -28,20 +28,13 @@ function PizzaItem({ pizza }) {
       method: "DELETE",
       url: "/",
     }).then((response) => {
-      dispatchEvent({
+      dispatch({
         type: "REMOVE_FROM_CART",
         payload: { pizza },
       });
     });
   };
-  const gridStyles = makeStyles({
-      root: {
-          flexGrow: 1
-      },
-      paper: {
-          padding: theme.spacing(1)
-      }
-  });
+
   const useStyles = makeStyles({
     root: {
       maxWidth: 345,
@@ -81,3 +74,5 @@ function PizzaItem({ pizza }) {
 }
 
 export default PizzaItem;
+
+
