@@ -26,7 +26,7 @@ const customerReducer = (state = [], action) => {
 };
   
 
-const cartReducer = (state = [], action) => {
+const cartReducer = (state = ['pizza1', 'pizza2'], action) => {
   if (action.type === "ADD_TO_CART") {
       return action.payload
   }

@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import CustomerForm from '../CustomerForm/CustomerForm';
 import PizzaList from '../PizzaList/PizzaList';
+import CheckoutPage from '../CheckoutPage/CheckoutPage';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       <p>Pizza is great.</p>
       <CustomerForm />
       <PizzaList />
+      <CheckoutPage />
     </div>
     
   );
