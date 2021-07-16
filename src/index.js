@@ -10,16 +10,24 @@ import { Provider } from "react-redux";
 //Reducers
 const pizzaReducer = (state = [], action) => {
     if (action.type === 'GET_PIZZAS') {
-        return action.payload
+        console.log(`the current action.payload is ${action.payload}`);
+        return state = action.payload;
     }
     return state;
 };
 
-const customerReducer = (state = [], action) => {
+const cartReducer = (state = [], action) => {
+  if (action.type === "ADD_TO_CART") {
+      return action.payload
+  }
+  if (action.type === "REMOVE_FROM_CART") {
+    return //something;
+  }
   return state;
 };
 
-const checkOutReducer = (state = [], action) => {
+const customerReducer = (state = [], action) => {
+
   return state;
 };
 
@@ -27,8 +35,7 @@ const checkOutReducer = (state = [], action) => {
 const storeInstance = createStore(
   combineReducers({
     pizzaReducer,
-    customerReducer,
-    checkOutReducer,
+    cartReducer,
   }),
   applyMiddleware(logger)
 );
