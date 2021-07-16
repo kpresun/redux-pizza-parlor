@@ -37,6 +37,8 @@ function PizzaItem({ pizza }) {
   const useStyles = makeStyles({
     root: {
       maxWidth: 345,
+      height: 650,
+      display: "flex"
     },
     media: {
       height: 140,
@@ -44,7 +46,7 @@ function PizzaItem({ pizza }) {
   });
   const classes = useStyles();
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} style={{display: "inline-block"}}>
       <CardActionArea>
         <CardMedia>
           <img src={pizza.image_path} />
@@ -53,16 +55,16 @@ function PizzaItem({ pizza }) {
           <Typography gutterBottom variant="h5" component="h2">
             {pizza.name} {pizza.price}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="textSecondary" component="p" style={{height: 125}}>
             {pizza.description}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={addPizzaToCart}>
+        <Button size="small" color="primary" onClick={addPizzaToCart} variant="contained">
           Add To Cart
         </Button>
-        <Button size="small" color="primary" onClick={removePizzaFromCart}>
+        <Button size="small" color="primary" onClick={removePizzaFromCart} variant="contained">
           Remove From Cart
         </Button>
       </CardActions>
