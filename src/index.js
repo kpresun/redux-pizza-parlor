@@ -4,6 +4,7 @@ import './index.css';
 import App from './components/App/App';
 import logger from "redux-logger";
 
+
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 
@@ -13,7 +14,10 @@ const pizzaReducer = (state = [], action) => {
 };
 
 const customerReducer = (state = [], action) => {
-  return state;
+    if (action.type === "ADD_NEW_CUSTOMER") {
+    return action.payload;
+    }
+    return state;
 };
 
 const checkOutReducer = (state = [], action) => {
