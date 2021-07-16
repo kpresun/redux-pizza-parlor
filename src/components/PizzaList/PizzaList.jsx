@@ -1,20 +1,28 @@
 import axios from 'axios';
 import React from 'react';
-import { useState } from 'react';
+import { useState, } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PizzaItem from '../PizzaItem/PizzaItem';
+import {useEffect} from 'react';
+
 
 function PizzaList() {
 
-    ourPizzas = useSelector(store => store.pizzaReducer)
+    useEffect(() => {
+        refreshPizza();
+    }, [])
 
+const dispatch = useDispatch();
+let ourPizzas = useSelector(store => store.pizzaReducer)
+
+const refreshPizza = () => {
     axios({
         method: 'GET',
-        url: '/'
+        url: '/api/pizza'
     })
     .then(response => {
         console.log(response.data);
-        dispatchEvent({
+        dispatch({
             type: "GET_PIZZAS",
             payload: response.data
         });
@@ -22,7 +30,9 @@ function PizzaList() {
     .catch(error => {
         console.log('axios get pizza error,', error);
     })
-    
+
+}
+
     return (
         <>
         <div>
