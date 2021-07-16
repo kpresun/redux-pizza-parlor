@@ -53,9 +53,11 @@ function PizzaItem({ pizza }) {
         </CardMedia>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {pizza.name} {pizza.price}
+            {pizza.name} 
+            <br>
+            </br>${pizza.price}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p" style={{height: 125}}>
+          <Typography variant="body2" color="textSecondary" component="p" style={{height: 95}}>
             {pizza.description}
           </Typography>
         </CardContent>
